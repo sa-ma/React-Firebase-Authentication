@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Main = styled.main`
   width: 100%;
@@ -56,9 +57,13 @@ export const FormButton = styled.button`
     border-color: #274c77;
     background-color: #274c77;
   }
+  &:disabled {
+    background-color: #ff9999;
+    cursor: not-allowed;
+  }
 `;
 
-export const FormLink = styled.a`
+export const FormLink = styled(Link)`
   text-decoration: none;
   color: #274c77;
   text-align: center;

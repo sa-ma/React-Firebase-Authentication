@@ -23,9 +23,9 @@ const SignIn = () => {
       </FormArea>
       <FormLinkArea>
         <p>
-          Don't have an account? <FormLink href="/sign-up">Sign Up</FormLink>
+          Don't have an account? <FormLink to="/signup">Sign Up</FormLink>
         </p>
-        <FormLink href="/reset-password"> Reset Password </FormLink>
+        <FormLink to="/reset-password"> Reset Password </FormLink>
       </FormLinkArea>
     </Main>
   );
