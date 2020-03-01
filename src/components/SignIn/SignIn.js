@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import Loader from 'react-loader-spinner';
+import { useHistory } from 'react-router-dom';
 import {
   Main,
   FormArea,
@@ -9,10 +12,7 @@ import {
   FormLinkArea,
   FormSeperator
 } from '../FormComponents';
-import { signInTraditionalUser } from '../Firebase';
-import { toast } from 'react-toastify';
-import Loader from 'react-loader-spinner';
-import { useHistory } from 'react-router-dom';
+import { signInTraditionalUser, signInWithGoogle } from '../Firebase';
 
 const SignIn = () => {
   const [loading, setLoading] = useState(false);
@@ -27,6 +27,18 @@ const SignIn = () => {
       await signInTraditionalUser(email, password);
       history.replace('/admin');
 
+      setLoading(false);
+    } catch ({ message }) {
+      toast.error(message);
+      setLoading(false);
+    }
+  };
+  const handleGoogleAuth = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    try {
+      await signInWithGoogle();
+      history.replace('/admin');
       setLoading(false);
     } catch ({ message }) {
       toast.error(message);
@@ -59,7 +71,9 @@ const SignIn = () => {
           )}
         </FormButton>
         <FormSeperator> or </FormSeperator>
-        <FormButton color="#F4B400;"> Sign in with Google</FormButton>
+        <FormButton color="#F4B400;" onClick={handleGoogleAuth}>
+          Sign in with Google
+        </FormButton>
       </FormArea>
       <FormLinkArea>
         <p>

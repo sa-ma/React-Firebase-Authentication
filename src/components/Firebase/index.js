@@ -1,7 +1,8 @@
 import Firebase, {
   createTraditionalUser,
   signInTraditionalUser,
-  signOutUser
+  signOutUser,
+  signInWithGoogle
 } from './firebase';
 import FirebaseContext from './context';
 
@@ -10,5 +11,6 @@ export {
   FirebaseContext,
   createTraditionalUser,
   signInTraditionalUser,
-  signOutUser
+  signOutUser,
+  signInWithGoogle
 };

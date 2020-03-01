@@ -1,6 +1,11 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import firebase from 'firebase/app';
 import Loader from 'react-loader-spinner';
@@ -54,6 +59,7 @@ const App = () => {
       <GlobalStyle />
       <Router>
         <Header />
+        {user && <Redirect to={{ pathname: '/admin' }} />}
         <Switch>
           <Route path="/reset-password">
             <PasswordForget />
