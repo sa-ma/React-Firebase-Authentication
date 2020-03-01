@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Main,
   FormArea,
@@ -9,15 +9,55 @@ import {
   FormLinkArea,
   FormSeperator
 } from '../FormComponents';
+import { signInTraditionalUser } from '../Firebase';
+import { toast } from 'react-toastify';
+import Loader from 'react-loader-spinner';
+import { useHistory } from 'react-router-dom';
 
 const SignIn = () => {
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useHistory();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    try {
+      await signInTraditionalUser(email, password);
+      history.replace('/admin');
+
+      setLoading(false);
+    } catch ({ message }) {
+      toast.error(message);
+      setLoading(false);
+    }
+  };
   return (
     <Main>
       <FormArea>
         <FormHeader>Sign In</FormHeader>
-        <FormInput type="email" placeholder="Email" />
-        <FormInput type="password" placeholder="Password" />
-        <FormButton> Sign In</FormButton>
+        <FormInput
+          type="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          placeholder="Email"
+          required
+        />
+        <FormInput
+          type="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          placeholder="Password"
+          required
+        />
+        <FormButton onClick={handleSubmit}>
+          {loading ? (
+            <Loader type="Oval" color="#fff" height={20} width={40} />
+          ) : (
+            'Sign In'
+          )}
+        </FormButton>
         <FormSeperator> or </FormSeperator>
         <FormButton color="#F4B400;"> Sign in with Google</FormButton>
       </FormArea>
