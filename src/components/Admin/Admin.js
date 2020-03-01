@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SignOut from '../SignOut';
+import { FirebaseContext } from '../Firebase';
 
 const Main = styled.div`
   width: 100%;
@@ -15,14 +16,18 @@ const SideNav = styled.nav`
 
 const Admin = () => {
   return (
-    <Main>
-      <SideNav>
-        <SignOut />
-      </SideNav>
-      <div>
-        <h1>Welcome User</h1>
-      </div>
-    </Main>
+    <FirebaseContext.Consumer>
+      {({ user }) => (
+        <Main>
+          <SideNav>
+            <SignOut />
+          </SideNav>
+          <div>
+            <h1>Welcome {user.displayName}</h1>
+          </div>
+        </Main>
+      )}
+    </FirebaseContext.Consumer>
   );
 };
 
