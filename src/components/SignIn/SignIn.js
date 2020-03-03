@@ -38,7 +38,7 @@ const SignIn = () => {
     setLoading(true);
     try {
       await signInWithGoogle();
-      history.replace('/admin');
+      history.replace('/dashboard');
       setLoading(false);
     } catch ({ message }) {
       toast.error(message);

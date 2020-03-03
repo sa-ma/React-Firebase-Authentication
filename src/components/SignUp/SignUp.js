@@ -35,7 +35,7 @@ const SignUp = () => {
     setLoading(true);
     try {
       await createTraditionalUser(email, password);
-      history.replace('/admin');
+      history.replace('/dashboard');
       setLoading(false);
     } catch ({ message }) {
       toast.error(message);

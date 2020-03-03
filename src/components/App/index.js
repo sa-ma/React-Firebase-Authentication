@@ -59,7 +59,7 @@ const App = () => {
       <GlobalStyle />
       <Router>
         <Header />
-        {user && <Redirect to={{ pathname: '/admin' }} />}
+        {user && <Redirect to={{ pathname: '/dashboard' }} />}
         <Switch>
           <Route path="/reset-password">
             <PasswordForget />
@@ -76,12 +76,9 @@ const App = () => {
           <Route path="/signin">
             <SignIn />
           </Route>
-          <Route path="/admin">
+          <PrivateRoute path="/dashboard">
             <Admin />
-          </Route>
-          {/* <PrivateRoute path="/dashboard">
-            <Admin />
-          </PrivateRoute> */}
+          </PrivateRoute>
           <Route exact path="/">
             <SignIn />
           </Route>

@@ -8,14 +8,8 @@ const PrivateRoute = ({ children, ...rest }) => {
       {({ user }) => (
         <Route
           {...rest}
-          render={({ location }) =>
-            user ? (
-              children
-            ) : (
-              <Redirect
-                to={{ pathname: '/signin', state: { from: location } }}
-              />
-            )
+          render={() =>
+            user ? children : <Redirect to={{ pathname: '/signin' }} />
           }
         />
       )}

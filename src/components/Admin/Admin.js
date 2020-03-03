@@ -23,7 +23,7 @@ const Admin = () => {
             <SignOut />
           </SideNav>
           <div>
-            <h1>Welcome {user.displayName}</h1>
+            <h1>Welcome {user ? user.displayName : ''}</h1>
           </div>
         </Main>
       )}
