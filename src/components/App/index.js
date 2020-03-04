@@ -64,12 +64,9 @@ const App = () => {
           <Route path="/reset-password">
             <PasswordForget />
           </Route>
-          <Route path="/change-password">
+          <PrivateRoute path="/change-password">
             <PasswordChange />
-          </Route>
-          <Route path="/reset-password">
-            <PasswordForget />
-          </Route>
+          </PrivateRoute>
           <Route path="/signup">
             <SignUp />
           </Route>

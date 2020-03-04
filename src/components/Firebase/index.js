@@ -3,7 +3,8 @@ import Firebase, {
   signInTraditionalUser,
   signOutUser,
   signInWithGoogle,
-  resetUserPassword
+  resetUserPassword,
+  updateUserPassword
 } from './firebase';
 import FirebaseContext from './context';
 
@@ -14,5 +15,6 @@ export {
   signInTraditionalUser,
   signOutUser,
   signInWithGoogle,
-  resetUserPassword
+  resetUserPassword,
+  updateUserPassword
 };

@@ -25,7 +25,7 @@ const SignIn = () => {
     setLoading(true);
     try {
       await signInTraditionalUser(email, password);
-      history.replace('/admin');
+      history.replace('/dashboard');
 
       setLoading(false);
     } catch ({ message }) {

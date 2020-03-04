@@ -24,6 +24,6 @@ export const signOutUser = () => firebaseAuth.signOut();
 export const resetUserPassword = (email) =>
   firebaseAuth.sendPasswordResetEmail(email);
 export const updateUserPassword = (password) =>
-  firebaseAuth.updatePassword(password);
+  firebaseAuth.currentUser.updatePassword(password);
 
 export default Firebase;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import SignOut from '../SignOut';
 import { FirebaseContext } from '../Firebase';
 
@@ -14,12 +15,28 @@ const SideNav = styled.nav`
   height: 100vh;
 `;
 
+const NavLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  border: 0;
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 0.95rem;
+  font-size: 1.2rem;
+  background-color: transparent;
+  &:hover {
+    background-color: #26547c;
+  }
+`;
+
 const Admin = () => {
   return (
     <FirebaseContext.Consumer>
       {({ user }) => (
         <Main>
           <SideNav>
+            <NavLink to="/change-password">Change Password</NavLink>
             <SignOut />
           </SideNav>
           <div>
